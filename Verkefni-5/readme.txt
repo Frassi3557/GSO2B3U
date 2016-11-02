@@ -22,3 +22,5 @@
 	* Client sendir beiðni á serverinn.
 	* Client bíður eftir svari frá server.
 	* Lokar tengingu.
+	
+Náði ekki að klára recently viewed images
