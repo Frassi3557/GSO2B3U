@@ -21,4 +21,5 @@ catch (PDOException $e){
 	
 	#skemmtilegri skilaboð til notanda sjá kóða t.d. bls. 99
 	echo "tenging tókst ekki". "<br>" . $e->getMessage();
+	exit();
 }

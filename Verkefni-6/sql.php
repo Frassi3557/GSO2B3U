@@ -18,7 +18,6 @@
 			<p>Lýsing:
 			<input type="text" name="description" placeholder="A picture of a cat"></p>
     </div>
-    <div class="radio">
       <p><input type="submit" value="Hlaða inn mynd"></p>
     </form>
     

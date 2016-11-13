@@ -1,13 +1,27 @@
 <?php
  // if the form has been submitted, process the input text
 if (isset($_POST['url'])) {
-	
-	$file_json = file_get_contents('myndir/myndir.json');
-  $json_myndir = json_decode($file_json, true);
-	$name = htmlspecialchars($_POST['title']);
+
+  $name = htmlspecialchars($_POST['title']);
 	$url = htmlspecialchars($_POST['url']);
-	$file_json = json_encode($name, $url)
+  
+  $string_json = file_get_contents('../myndir/myndir.json');
+  $json_myndir = json_decode($string_json);
+  
+  if (!$json_myndir) {
+    trigger_error('JSON FAIL:  ' . json_last_error(), E_USER_ERROR);
+  } 
+  
+  $new = new StdClass;
+  $new->name = $name;
+  $new->url = $url;
+  
+  $json_myndir->myndirFylki[] = $new;
+  
+  $final_obj = json_encode($json_myndir);
+  file_put_contents('../myndir/myndir.json', $final_obj);
+
   header('Location:http://tsuts.tskoli.is/2t/0506992429/GSO2B3U/Verkefni-6/json.php');
   exit;
+  
 }
- */ 

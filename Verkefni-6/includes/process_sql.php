@@ -2,16 +2,34 @@
 
 <?php
 // sækja skrá sem geymir tengingu við gagnagrunn
-require($_SERVER['DOCUMENT_ROOT'] . "/2T/0506992429/GSO2B3U/Verkefni-6/database/dbcon.php");  
+require($_SERVER['DOCUMENT_ROOT'] . "/2T/0506992429/GSO2B3U/Verkefni-6/database/dbcon.php");   
 
-$name = $_POST['title']; 	
+if (isset($_POST["title"]))
+{
+  $name = $_POST['title']; 	
+} 
+else {
+  $name = null;
+}
 
-$url = $_POST['url']; 		
+if (isset($_POST["url"]))
+{
+  $url = $_POST['url'];
+}  		
+else {
+  $url = null;
+}
 
-$description = $_POST['decription'];
+if (isset($_POST["description"]))
+{
+  $description = $_POST['description'];
+} 
+else {
+  $description = null;
+}
 
 //er hérna að athuga hvort breyturnar séu ekki tómar
-if(!empty($name) && !empty($url)) 
+if(isset($name) && isset($url)) 
 {
 	// SQL skipun/fyrirspurnin - gott að athuga fyrst hvort hún sé rétt  með að skrifa í og prófa í phpmyadmin eða workbench 
 	// hér erum við að nota placeholder (er með : á undan) fyrir gildi úr $_POST fylki.
@@ -35,8 +53,8 @@ if(!empty($name) && !empty($url))
 		// execute segir MySQL að framkvæma SQL kóða á gagnagrunn með gildunum.
 		$q->execute();  
 		
-		//header('Location:http://tsuts.tskoli.is/2t/0506992429/GSO2B3U/Verkefni-6/sql.php');
-  	//exit;
+		header('Location:http://tsuts.tskoli.is/2t/0506992429/GSO2B3U/Verkefni-6/sql.php');
+  	exit();
 	}
 	//
 	catch (PDOException $ex){

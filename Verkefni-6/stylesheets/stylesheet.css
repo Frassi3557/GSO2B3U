@@ -5,6 +5,7 @@
   left: 5%;
 }
 .image {
+  position: relative;
   width: 450px;
   height: 250px;
   }
